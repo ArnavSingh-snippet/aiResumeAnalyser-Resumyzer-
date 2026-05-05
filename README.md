@@ -1,20 +1,34 @@
-# Welcome to React Router!
+# AI Resume Analyzer - Resumyzer
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+An intelligent resume analysis tool that uses AI to evaluate and score resumes against job descriptions, providing detailed feedback and ATS compatibility checks.
 
 ## Features
 
-- 🚀 Server-side rendering
+- 📄 **PDF Resume Upload** - Upload resumes in PDF format
+- 🤖 **AI-Powered Analysis** - Analyze resumes using advanced AI models
+- 📊 **Score & Feedback** - Get detailed scoring and improvement suggestions
+- ✅ **ATS Compatibility** - Check if your resume passes ATS (Applicant Tracking System) filters
+- 📈 **Visual Analytics** - Beautiful score gauges and progress indicators
+- 🔐 **Secure** - User authentication with Puter.io integration
+- 🎨 **Responsive Design** - Works seamlessly on desktop and mobile
 - ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
 - 🔒 TypeScript by default
 - 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+
+## Tech Stack
+
+- **Frontend**: React Router, TypeScript, TailwindCSS, Vite
+- **Backend**: Puter.js (Cloud OS platform for backend services)
+- **Containerization**: Docker
+- **PDF Processing**: PDF.js for resume parsing
 
 ## Getting Started
+
+### Prerequisites
+
+- Node.js (v16+)
+- npm or yarn
+- Puter.js account (for backend services)
 
 ### Installation
 
@@ -49,10 +63,8 @@ npm run build
 To build and run using Docker:
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+docker build -t ai-resume-analyzer .
+docker run -p 5173:5173 ai-resume-analyzer
 ```
 
 The containerized application can be deployed to any platform that supports Docker, including:
@@ -64,24 +76,69 @@ The containerized application can be deployed to any platform that supports Dock
 - Fly.io
 - Railway
 
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
+## Project Structure
 
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+app/
+  ├── components/        # Reusable UI components
+  ├── routes/           # Page routes (home, auth, upload, resume, wipe)
+  └── lib/              # Utility functions, PDF processing, Puter.js integration
+constants/             # App constants
+types/                 # TypeScript type definitions
+public/                # Static assets
 ```
 
-## Styling
+## Key Components
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+- **FileUploader** - Handle resume PDF uploads
+- **ScoreGauge/ScoreCircle** - Visualize resume scores
+- **ATS** - ATS compatibility analyzer
+- **ResumeCard** - Display resume analysis results
+- **Summary** - Show analysis summary and recommendations
+- **Accordion** - Expandable sections for detailed feedback
+
+## Features in Detail
+
+### Resume Analysis
+Upload your resume to get:
+- Overall compatibility score
+- Section-wise analysis
+- Keyword matching
+- Content suggestions
+
+### ATS Checker
+Verify your resume will:
+- Parse correctly in ATS systems
+- Include proper formatting
+- Contain relevant keywords
+- Meet tracking system requirements
+
+### Puter.js Integration
+The app uses Puter.js for:
+- User authentication
+- Cloud storage for resumes
+- Secure file handling
+
+## Environment Variables
+
+Create a `.env` file in the root directory:
+
+```
+VITE_PUTER_API_KEY=your_puter_api_key_here
+```
+
+## Contributing
+
+Contributions are welcome! Feel free to submit issues and enhancement requests.
+
+## License
+
+[Add your license here]
+
+## Support
+
+For issues and questions, please open an issue on GitHub.
 
 ---
 
-Built with ❤️ using React Router.
+Built with ❤️ using React Router and Puter.js.
